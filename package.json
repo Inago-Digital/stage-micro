@@ -1,0 +1,25 @@
+{
+  "name": "stage-micro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx eleventy && npm run build:css",
+    "build:css": "npx postcss ./src/css/tailwind.css -o ./_site/css/styles.css --env production",
+    "dev": "npx eleventy --serve & npm run watch:css",
+    "watch:css": "npx postcss ./src/css/tailwind.css -o ./_site/css/styles.css --watch",
+    "start": "npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^6.0.5",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.17"
+  }
+}

@@ -1,0 +1,204 @@
+<header
+  class="flex justify-between items-center bg-dark z-50 fixed top-0 left-0 right-0 md:h-28"
+>
+  <a href="/">
+    <img
+      src="/assets/graphic/logo.svg"
+      alt="Stage Klub Logo"
+      class="w-50 md:w-80 h-auto ml-5 md:ml-20"
+    />
+  </a>
+  <div class="hidden md:flex items-center space-x-8 mr-20">
+    <a
+      href="#program"
+      class="text-white text-xl font-bold underline hover:text-primary uppercase transition-colors"
+      >Program</a
+    >
+    <a
+      href="#o-klubu"
+      class="text-white text-xl font-bold underline hover:text-primary uppercase transition-colors"
+      >O klubu</a
+    >
+    <div class="flex space-x-4">
+      <a
+        href="https://www.instagram.com/stage_klub/"
+        class="bg-darker-gray w-16 h-16 flex justify-center items-center cursor-pointer rounded-lg hover:bg-dark-gray transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <img
+          src="/assets/icons/instagram.svg"
+          alt="Instagram Icon"
+          class="w-8 h-8"
+        />
+      </a>
+      <a
+        href="https://www.facebook.com/profile.php?id=61574165311841"
+        class="bg-darker-gray w-16 h-16 flex justify-center items-center cursor-pointer rounded-lg hover:bg-dark-gray transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        <img
+          src="/assets/icons/facebook.svg"
+          alt="Facebook Icon"
+          class="w-8 h-8"
+        />
+      </a>
+    </div>
+  </div>
+  <button
+    id="menu-toggle"
+    class="md:hidden bg-primary w-16 h-16 flex justify-center items-center cursor-pointer"
+    aria-label="Toggle menu"
+    aria-expanded="false"
+  >
+    <div class="flex flex-col items-end justify-between w-8 h-[19px]">
+      <span class="line1 bg-white w-full h-[3px] block"></span>
+      <span class="line2 bg-white w-full h-[3px] block"></span>
+      <span class="line3 bg-white w-1/2 h-[3px] block"></span>
+    </div>
+  </button>
+</header>
+
+<nav
+  id="mobile-nav"
+  class="fixed inset-0 top-16 bg-primary translate-x-full opacity-0 z-20"
+  aria-hidden="true"
+>
+  <img
+    src="/assets/graphic/thorns_dark.svg"
+    alt="Stage Klub Logo"
+    class="w-50 h-auto ml-5"
+  />
+  <ul class="mt-6 space-y-8 p-5">
+    <li>
+      <a
+        href="/"
+        class="nav-link text-white text-5xl font-bold underline opacity-0 hover:text-dark transition-colors"
+        >Home</a
+      >
+    </li>
+    <li>
+      <a
+        href="#program"
+        class="nav-link text-white text-5xl font-bold underline opacity-0 hover:text-dark transition-colors"
+        >Program</a
+      >
+    </li>
+    <li>
+      <a
+        href="#o-klubu"
+        class="nav-link text-white text-5xl font-bold underline opacity-0 hover:text-dark transition-colors"
+        >O klubu</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<script type="module">
+  import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@10/+esm"
+
+  const toggle = document.getElementById("menu-toggle")
+  const nav = document.getElementById("mobile-nav")
+  const links = document.querySelectorAll(".nav-link")
+  const line1 = toggle.querySelector(".line1")
+  const line2 = toggle.querySelector(".line2")
+  const line3 = toggle.querySelector(".line3")
+  const body = document.body
+
+  let menuOpen = false
+  let scrollY = 0
+
+  function openMenu() {
+    setTimeout(() => {
+      scrollY = window.scrollY
+      body.style.position = "fixed"
+      body.style.top = `-${scrollY}px`
+      body.style.left = "0"
+      body.style.right = "0"
+      body.style.overflow = "hidden"
+      body.style.height = "100vh"
+    }, 500)
+
+    animate(
+      nav,
+      { transform: ["translateY(-100%)", "translateY(0%)"], opacity: [0, 1] },
+      { duration: 0.4, easing: "cubic-bezier(.25,1,.5,1)" }
+    )
+    animate(
+      links,
+      { opacity: [0, 1], transform: ["translateY(-1rem)", "translateY(0rem)"] },
+      {
+        delay: stagger(0.08, { start: 0.25 }),
+        duration: 0.3,
+        easing: "ease-out",
+      }
+    )
+    animate(
+      line1,
+      { rotate: [0, 45], y: [0, 8] },
+      { type: "spring", stiffness: 260, damping: 20 }
+    )
+    animate(
+      line2,
+      { opacity: [1, 0] },
+      { type: "spring", stiffness: 260, damping: 20 }
+    )
+    animate(
+      line3,
+      { rotate: [0, -45], y: [0, -8], width: ["50%", "100%"] },
+      { type: "spring", stiffness: 260, damping: 20 }
+    )
+    nav.setAttribute("aria-hidden", "false")
+    toggle.setAttribute("aria-expanded", "true")
+    menuOpen = true
+  }
+
+  function closeMenu() {
+    animate(
+      [...links].reverse(),
+      { opacity: [1, 0], transform: ["translateY(0rem)", "translateY(-1rem)"] },
+      { delay: stagger(0.08), duration: 0.25, easing: "ease-in" }
+    )
+    animate(
+      nav,
+      { transform: ["translateY(0%)", "translateY(-100%)"], opacity: [1, 0] },
+      { delay: 0.25 + links.length * 0.08, duration: 0.35, easing: "ease-in" }
+    )
+    animate(
+      line1,
+      { rotate: [45, 0], y: [8, 0] },
+      { type: "spring", stiffness: 260, damping: 20 }
+    )
+    animate(
+      line2,
+      { opacity: [0, 1] },
+      { type: "spring", stiffness: 260, damping: 20 }
+    )
+    animate(
+      line3,
+      { rotate: [-45, 0], y: [-8, 0], width: ["100%", "50%"] },
+      { type: "spring", stiffness: 260, damping: 20 }
+    )
+    nav.setAttribute("aria-hidden", "true")
+    toggle.setAttribute("aria-expanded", "false")
+    body.style.position = ""
+    body.style.top = ""
+    body.style.left = ""
+    body.style.right = ""
+    body.style.overflow = ""
+    body.style.height = ""
+    window.scrollTo(0, scrollY)
+    menuOpen = false
+  }
+
+  toggle.addEventListener("click", () => {
+    menuOpen ? closeMenu() : openMenu()
+  })
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menuOpen) closeMenu()
+  })
+</script>

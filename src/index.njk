@@ -1,0 +1,146 @@
+---
+layout: layouts/default.njk
+---
+
+<main
+  class="p-5 md:p-20 pt-16 md:pt-28 bg-dark relative bg-[url('/assets/graphic/smoke.png')] md:flex md:gap-16 md:h-screen"
+>
+  <div class="md:w-1/2">
+    <img
+      src="/assets/graphic/thorns_primary.svg"
+      alt="Stage Klub Logo"
+      class="w-50 md:w-80 h-auto"
+    />
+    <h1 class="mt-16 text-7xl text-white hidden md:inline-block">
+      Multižánrový
+      <br />
+      klub
+      <br />
+      <span class="oblique">v Jablonci</span>
+    </h1>
+    <h1 class="mt-12 text-6xl text-white md:hidden">
+      Hudební klub
+      <br />
+      <span class="oblique">v Jablonci</span>
+    </h1>
+    <p class="mt-10 text-white text-xl">
+      Nová kapitola jednoho z nejstarších hudebních klubů v Česku. Přijďte se
+      přesvědčit na vlastní uši!
+    </p>
+    <a
+      href="#program"
+      class="uppercase flex items-center justify-center mt-16 bg-primary text-white text-2xl font-bold h-20 w-80 rounded-lg hover:bg-primary-pale transition-colors"
+    >
+      Program
+    </a>
+  </div>
+
+  <img
+    src="/assets/graphic/video_thumb.png"
+    alt="Video Thumbnail"
+    class="mt-16 w-full h-auto z-10 relative md:w-1/2 md:mt-10 object-cover rounded-xl"
+  />
+
+  <div
+    class="absolute w-full h-[125px] bottom-0 bg-white left-0 md:hidden"
+  ></div>
+</main>
+
+<section
+  class="bg-white px-5 py-16 md:px-56 md:py-32 flex flex-col items-center"
+  id="program"
+>
+  <h2 class="text-5xl md:text-8xl font-bold uppercase mb-10 md:mb-16">
+    Program
+  </h2>
+  {% for event in events %} {% include 'partials/even-item.njk' %} {% endfor %}
+</section>
+
+<section
+  class="bg-dark px-5 md:px-20 py-16 md:py-24 flex flex-col md:flex-row md:gap-20"
+  id="o-klubu"
+>
+  <div class="md:w-1/2">
+    <h2 class="text-5xl text-white mb-8 hidden md:inline-block">
+      Multižánrové
+      <br />
+      kulturní místo
+    </h2>
+    <h2 class="text-4xl text-white mb-8 md:hidden">
+      Moderní multifunkční
+      <br />
+      klub
+    </h2>
+    <p class="text-white mb-8 md:mb-10">
+      Jeden z nejdéle fungujících hudebních klubů v České republice během své
+      téměř 30 leté existence hostil řadu významných českých i zahraničních
+      interpretů. Nyní je klub po kompletní rekonstrukci, vede ho Tomáš Hájíček
+      ml. a píše tak novou kapitolu tohoto místa.
+    </p>
+    <div class="flex flex-wrap gap-3">
+      {% for tag in tags %}
+      <h3
+        class="text-xl text-primary inline py-4 px-5 border-primary border rounded-xl"
+      >
+        {{ tag }}
+      </h3>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="md:w-1/2">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2525.825008000747!2d15.16989931271069!3d50.72318557152738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470ecad024a94ddf%3A0x359033d656bb40c1!2sJir%C3%A1skova%204898%2F9%2C%20466%2001%20Jablonec%20nad%20Nisou%201!5e0!3m2!1sen!2scz!4v1754993538104!5m2!1sen!2scz"
+      referrerpolicy="no-referrer-when-downgrade"
+      loading="lazy"
+      height="280"
+      class="mt-12 w-full rounded-xl mb-10 md:mt-0"
+    ></iframe>
+
+    <p class="text-white font-bold text-xl leading-6 mb-8">
+      Jiráskova 4898/9, 466 01 Jablonec nad Nisou 1
+    </p>
+    <div class="md:flex md:gap-10">
+      <a
+        href="mailto:klubstage@seznam.cz"
+        class="text-white font-bold hover:underline flex items-center gap-4 text-xl mb-4 md:mb-0"
+      >
+        <img
+          src="/assets/icons/email.svg"
+          class="w-50 h-auto"
+          alt="Email Icon"
+        />
+        klubstage@seznam.cz
+      </a>
+      <a
+        href="tel:+420 725 293 312"
+        class="text-white font-bold hover:underline flex items-center gap-4 text-xl"
+      >
+        <img
+          src="/assets/icons/phone.svg"
+          class="w-50 h-auto"
+          alt="Email Icon"
+        />
+        +420 725 293 312
+      </a>
+    </div>
+  </div>
+</section>
+
+<section
+  class="bg-white px-5 md:px-20 py-16 md:py-24 flex flex-col items-center"
+  id="partners"
+>
+  <h2 class="text-5xl md:text-7xl font-bold uppercase mb-10">Partneři</h2>
+  <div
+    class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center"
+  >
+    {% for partner in partners %}
+    <img
+      src="/assets/partners/{{ partner }}"
+      alt="{{ partner | replace('.png', '') }}"
+      class="h-auto object-contain"
+    />
+    {% endfor %}
+  </div>
+</section>
