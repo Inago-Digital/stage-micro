@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "MADE Outer Sans", sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "MADE Outer Sans", sans-serif;
+  font-weight: bold;
+}
+
+.oblique {
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../assets/fonts/MADE\ Outer\ Sans\ Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../assets/fonts/MADE\ Outer\ Sans\ Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../assets/fonts/MADE\ Outer\ Sans\ Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../assets/fonts/MADE\ Outer\ Sans\ Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MADE Outer Sans";
+  src: url("../assets/fonts/MADE\ Outer\ Sans\ Outline\ Bold.otf")
+    format("opentype");
+  font-weight: bold;
+  font-style: oblique;
+}
