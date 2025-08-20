@@ -6,12 +6,12 @@ backend:
   app_id: Ov23liW6Vo6aYGuKvJLx
 
 media_folder: "static/uploads"
-public_folder: "src/_data/events"
+public_folder: "src/_data/uploads"
 
 collections:
   - name: "events"
     label: "Events"
-    folder: "content/events"
+    folder: "src/_data/events"
     create: true
     slug: "{{date}}"
     format: "json"
