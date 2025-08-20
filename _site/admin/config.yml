@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: Inago-Digital/stage-micro
+  branch: main
+  auth_type: implicit
+  app_id: Ov23liW6Vo6aYGuKvJLx
+
+media_folder: "static/uploads"
+public_folder: "src/_data/events"
+
+collections:
+  - name: "events"
+    label: "Events"
+    folder: "content/events"
+    create: true
+    slug: "{{date}}"
+    format: "json"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "eTicket Link", name: "eTicketLink", widget: "string" }
+      - { label: "GoOut Link", name: "gooutLink", widget: "string" }
