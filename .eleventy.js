@@ -9,15 +9,19 @@ module.exports = function (eleventyConfig) {
     return dt.setLocale("cs").toFormat(format)
   })
   eleventyConfig.addCollection("events", () => {
-    const dir = "src/_data/events"
-    return fs
-      .readdirSync(dir)
-      .filter((file) => file.endsWith(".json"))
-      .map((file) => {
-        const filepath = path.join(dir, file)
-        const data = JSON.parse(fs.readFileSync(filepath))
-        return { file, ...data }
-      })
+    try {
+      const dir = "src/_data/events"
+      return fs
+        .readdirSync(dir)
+        .filter((file) => file.endsWith(".json"))
+        .map((file) => {
+          const filepath = path.join(dir, file)
+          const data = JSON.parse(fs.readFileSync(filepath))
+          return { file, ...data }
+        })
+    } catch (err) {
+      return []
+    }
   })
 
   eleventyConfig.addPassthroughCopy("src/assets")
