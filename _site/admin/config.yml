@@ -4,6 +4,7 @@ backend:
   branch: main
   auth_type: implicit
   app_id: Ov23liW6Vo6aYGuKvJLx
+  base_url: https://auth.klubstage.cz
 
 media_folder: "static/uploads"
 public_folder: "src/_data/uploads"
