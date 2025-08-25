@@ -20,5 +20,15 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "date" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "eTicket Link", name: "eTicketLink", widget: "string" }
-      - { label: "GoOut Link", name: "gooutLink", widget: "string" }
+      - {
+          label: "eTicket Link",
+          name: "eTicketLink",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "GoOut Link",
+          name: "gooutLink",
+          widget: "string",
+          required: false,
+        }
