@@ -631,6 +631,9 @@ video {
 .w-full {
   width: 100%;
 }
+.w-auto {
+  width: auto;
+}
 .max-w-64 {
   max-width: 16rem;
 }
@@ -757,10 +760,6 @@ video {
 }
 .p-6 {
   padding: 1.5rem;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 .px-5 {
   padding-left: 1.25rem;
@@ -1017,6 +1016,14 @@ h6 {
     width: 75%;
   }
 
+  .md\:w-64 {
+    width: 16rem;
+  }
+
+  .md\:max-w-64 {
+    max-width: 16rem;
+  }
+
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -1047,6 +1054,11 @@ h6 {
 
   .md\:p-20 {
     padding: 5rem;
+  }
+
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
   .md\:px-20 {
