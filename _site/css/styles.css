@@ -631,12 +631,6 @@ video {
 .w-full {
   width: 100%;
 }
-.w-auto {
-  width: auto;
-}
-.max-w-64 {
-  max-width: 16rem;
-}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1008,20 +1002,16 @@ h6 {
     width: 12rem;
   }
 
+  .md\:w-64 {
+    width: 16rem;
+  }
+
   .md\:w-80 {
     width: 20rem;
   }
 
   .md\:w-9\/12 {
     width: 75%;
-  }
-
-  .md\:w-64 {
-    width: 16rem;
-  }
-
-  .md\:max-w-64 {
-    max-width: 16rem;
   }
 
   .md\:grid-cols-4 {

@@ -14,6 +14,14 @@ module.exports = function (eleventyConfig) {
       return fs
         .readdirSync(dir)
         .filter((file) => file.endsWith(".json"))
+        .sort((a, b) => {
+          const filepathA = path.join(dir, a)
+          const filepathB = path.join(dir, b)
+          const dataA = JSON.parse(fs.readFileSync(filepathA))
+          const dataB = JSON.parse(fs.readFileSync(filepathB))
+
+          return new Date(dataA.date) - new Date(dataB.date)
+        })
         .map((file) => {
           const filepath = path.join(dir, file)
           const data = JSON.parse(fs.readFileSync(filepath))
