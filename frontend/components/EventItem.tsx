@@ -1,17 +1,8 @@
 import { Event } from "@/types/Event"
 import Link from "next/link"
 import { motion } from "framer-motion"
-
-const toDate = (value: string | Date) =>
-  value instanceof Date ? value : new Date(value)
-
-const dayShort = (value: string | Date) =>
-  new Intl.DateTimeFormat("cs-CZ", { weekday: "short" }).format(toDate(value))
-
-const dayMonth = (value: string | Date) =>
-  new Intl.DateTimeFormat("cs-CZ", { day: "2-digit", month: "2-digit" }).format(
-    toDate(value),
-  )
+import { format } from "date-fns"
+import { cs } from "date-fns/locale"
 
 export default function EventItem({ event }: { event: Event }) {
   return (
@@ -21,9 +12,11 @@ export default function EventItem({ event }: { event: Event }) {
       whileInView={{ opacity: 1, y: 0 }}
     >
       <p className="text-3xl font-medium uppercase md:w-32">
-        {dayShort(event.date)}
+        {format(new Date(event.date), "EEEEE", { locale: cs })}
         <br className="hidden md:inline-block" />
-        <span className="text-primary">{dayMonth(event.date)}</span>
+        <span className="text-primary">
+          {format(new Date(event.date), "dd/MM", { locale: cs })}
+        </span>
       </p>
 
       <section className="md:w-9/12">
